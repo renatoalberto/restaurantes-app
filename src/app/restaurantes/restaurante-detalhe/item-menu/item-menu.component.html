@@ -1,0 +1,11 @@
+<div class="menu-item-info-box" [@apareceuItem]="estadoItem">
+  <span class="menu-item-info-box-icon" *ngIf="itemMenu"><img [src]="itemMenu.imagePath"></span>
+
+  <div class="menu-item-info-box-content">
+    <span class="menu-item-info-box-text">{{ itemMenu.name }}</span>
+    <span class="menu-item-info-box-detail">{{ itemMenu.description }}</span>
+    <span class="menu-item-info-box-price">{{ itemMenu.price | currency: 'BRL': 'symbol' }}</span> <!-- aula 51 --> <!-- pipe currency mudou no angular 5 de : | currency: 'BRL': true }} -->
+    <a class="" (click)="adicionaItem()"><i class="fa fa-plus-circle"></i> Adicionar</a>
+  </div>
+  <!-- /.info-box-content -->
+</div>

@@ -1,0 +1,8 @@
+// Aula 110 - criação do tsconfig e explicação de cada campo
+// Para iniciar o compilador - no prompt, na pasta backend -> tsc -w
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "dist"
+  }
+}

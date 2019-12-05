@@ -1,0 +1,13 @@
+<!-- Aula 61-->
+<div class="form-group has-feedback" 
+  [class.has-success]="temSucesso()"
+  [class.has-error]="temErro()"
+>
+  <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> {{ label }}</label>
+
+  <!--<input type="text" class="form-control" name="endereco" #iptEndereco="ngModel" ngModel placeholder="Endereço" required minlength="5">-->
+  <ng-content></ng-content> <!-- Aula 61 3:50 (Content Projection)-->
+
+  <span class="help-block" *ngIf="temSucesso() && mostrarMensagem"><i class="fa fa-check"></i> Ok</span>
+  <span class="help-block" *ngIf="temErro() && mostrarMensagem"><i class="fa fa-remove"></i> {{ mensagemErro }}</span>
+</div>

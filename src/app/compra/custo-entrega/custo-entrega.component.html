@@ -1,0 +1,16 @@
+<div class="table-responsive">
+  <table class="table">
+    <tbody><tr>
+      <th style="width:50%">Itens:</th>
+      <td class="text-right">{{ valorItens | currency: 'BRL': 'symbol' }}</td> <!-- pipe currency mudou no angular 5 de : | currency: 'BRL': true }} -->
+    </tr>
+    <tr>
+      <th>Frete:</th>
+      <td class="text-right">{{ entrega | currency: 'BRL': 'symbol' }}</td> <!-- pipe currency mudou no angular 5 de : | currency: 'BRL': true }} -->
+    </tr>
+    <tr>
+      <th>Total:</th>
+      <td class="text-right">{{ valorTotalCompra() | currency: 'BRL': 'symbol' }}</td> <!-- pipe currency mudou no angular 5 de : | currency: 'BRL': true }} -->
+    </tr>
+  </tbody></table>
+</div>

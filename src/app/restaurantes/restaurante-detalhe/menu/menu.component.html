@@ -1,0 +1,9 @@
+  <div class="col-md-9 col-xs-12">
+    <mt-item-menu *ngFor="let item of menu | async" 
+      [itemMenu]="item"
+      (add)="carrinhoCompras.adicionaItemCarrinho($event)"
+    ></mt-item-menu>
+  </div>
+  <div class="col-md-3 col-xs-12">
+    <mt-carrinho-compras #carrinhoCompras></mt-carrinho-compras> <!-- aula 53 3:25 -->
+  </div>

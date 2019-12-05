@@ -1,0 +1,25 @@
+1ª - Iniciar o Angular
+ng serve
+
+2ª - Compilar o backend, no prompt na pasta backend, gera compilado na pasta dist
+tsc -w
+
+*********************************** Ativar o Banco de Dados ********************************
+3.1ª - Iniciar o Json-Server, sem o uso do backend
+json-server db.json
+
+3.2ª - Iniciar o Json-Server, com o uso do backend
+node backend/server
+
+3.3ª - Iniciar o Json-Server, com o uso do backend, com monitoração de mudança do backend
+nodemon backend/dist/server.js
+
+*********************************** Gerar o build de prdução ********************************
+4.1ª - Antes da atualização do angular para 5/6 
+ng build --prod
+
+4.2ª - Após atualização do angular para 5/6 - pega o css e grava em um arquivo de scrip da aplicação
+ng build --prod --extract-css=false
+
+4.3ª - Aula 100 - quando a aplicação esta em um subdiretório de um servidor, exemplo pasta "angular_tarso_bessa" *Importante
+ng build --prod --extract-css=false --base-href /angular_tarso_bessa/

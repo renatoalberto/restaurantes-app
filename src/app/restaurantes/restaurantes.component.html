@@ -1,0 +1,37 @@
+<!-- INíCIO do CONTEÚDO -->
+<section class="content-header">
+  <h1>
+    Todos os Restaurantes    
+    <a class="search-link pull-right" (click)="togglePesquisa()">
+      <span *ngIf="iptPesquisa.value"><small>"{{iptPesquisa.value}}"</small></span>
+      <i class="fa fa-search"></i>
+    </a> <!--Aula 102 - adicionando busca de restaurantes -->
+  </h1>
+
+  <!-- Barra de busca - Aula 102 -->
+  <div class="row">
+    <div class="col-xs-12 barra-pesquisa" [@togglePesquisa]="estadoBarraPesquisa">
+      <form [formGroup]="pesquisaForm">
+        <div class="form-group">
+          <input type="text" class="form-control" #iptPesquisa formControlName="pesquisaControl" placeholder="O que você está procurando?">
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<section class="content">
+
+<div class="row">
+  <div class="col-sm-6 col-xs-12" *ngFor="let restaurante of restaurantes">
+    <mt-restaurante [restaurante]="restaurante"></mt-restaurante>
+  </div>
+  <div class="col-xs-12" *ngIf="restaurantes?.length === 0">  <!--Aula 106 7:00 -->
+    <p class="lead text-center">Não foram encontrados itens para sua busca!</p>
+  </div>
+</div>
+
+</section>
+
+<!-- FIM  do CONTEÚDO -->

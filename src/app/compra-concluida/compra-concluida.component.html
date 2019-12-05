@@ -1,0 +1,15 @@
+<section class="content-header">
+</section>
+
+<section class="content">
+  <div class="jumbotron">
+    <h2>Pedido Concluído</h2>
+    <p>Seu pedido foi recebido pelo restaurante. Prepare a mesa que a comida está chegando!</p>
+    <p><b>Avalie</b> sua experiência:</p>
+    <mt-avaliacao (avaliado)="avaliado()"></mt-avaliacao>
+    <p> &nbsp;
+      <span *ngIf="avaliacaoRealizada">Agradecemos pela sua avaliação!</span>
+    </p>
+  </div>
+
+</section>

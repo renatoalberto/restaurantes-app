@@ -1,0 +1,18 @@
+<!--
+  Eventos de mouse
+  mouseenter | mouseover - entrou na área
+  mouseout | mouseleave - saiu da área
+-->
+
+<p>
+  <i 
+    class="fa" 
+    style="color: goldenrod;"
+    *ngFor="let a of avaliacoes" 
+    [class.fa-star]="a <= avaliacao"
+    [class.fa-star-o]="a > avaliacao"
+    (click)="atribuirAvaliacao(a)"
+    (mouseenter)="atribuirAvaliacaoTemporaria(a)"
+    (mouseleave)="zerarAvaliacaoTemporaria()" 
+  ></i>
+</p>

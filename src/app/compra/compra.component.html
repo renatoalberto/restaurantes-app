@@ -1,0 +1,142 @@
+      <!--INICIO DO CONTEUDO-->
+      <section class="content-header">
+      </section>
+
+      <section class="content">
+        <section class="invoice">
+
+              <span><pre>Formulário válido: {{ compraForm.valid }} <br />{{ compraForm.value | json}}</pre></span>
+
+              <form [formGroup]="compraForm" novalidate>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <h2 class="page-header">
+                      <i class="fa fa-shopping-cart"></i> Finalize o seu pedido
+                    </h2>
+                  </div>
+                </div>                
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-9">
+                    <p class="lead">Seus dados:</p>
+                  </div>
+                  <div class="col-xs-12 col-sm-3">
+                    <span class="help-block pull-right has-error-block" *ngIf="compraForm.hasError('emailsDivergentes')"><i class="fa fa-remove"></i> Emails divergentes.</span>
+                  </div>
+
+                  <div class="col-sm-6 col-xs-12">
+                    <mt-input-container
+                      label="Nome"
+                      mensagemErro="Nome obrigatório e mínimo 3 caracteres."
+                    >
+                      <input class="form-control" formControlName="nome" placeholder="Nome">
+                    </mt-input-container>
+                  </div>
+
+                  <div class="col-sm-3 col-xs-12">
+                    <mt-input-container
+                      label="Email"
+                      mensagemErro="Email inválido."
+                    >
+                      <input class="form-control" formControlName="email" placeholder="Email">
+                    </mt-input-container>
+                  </div>                    
+
+                  <div class="col-sm-3 col-xs-12">
+                    <mt-input-container
+                      label="Confirmação do Email"
+                      mensagemErro="Confirmação de email inválido."
+                    >
+                      <input class="form-control" formControlName="emailConfirmacao" placeholder="Confirmação do email">
+                    </mt-input-container>
+                  </div>                    
+
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="lead">Endereço de Entrega:</p>
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <mt-input-container
+                      label="Endereço"
+                      mensagemErro="Endereço obrigatório e mínimo 5 caracteres."
+                    >
+                      <input class="form-control" formControlName="endereco" placeholder="Endereço">
+                    </mt-input-container>
+                  </div>
+                  <div class="col-sm-3 col-xs-6">
+                    <mt-input-container
+                      label="Número"
+                      mensagemErro="Obrigatório e somente números."
+                    >
+                      <input class="form-control" formControlName="numero" placeholder="Número">
+                    </mt-input-container>
+                  </div>
+                  <div class="col-sm-3 col-xs-6">
+                    <mt-input-container
+                      label="complemento"
+                      menssagemErro=""
+                    >
+                      <input class="form-control" formControlName="complemento" placeholder="Complemento">
+                    </mt-input-container>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- Table row -->
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="lead">Itens do Pedido:</p>
+                  </div>                  
+
+                  <mt-itens-compra
+                    [itensCompra]="itensCarrinhoCompras()"
+                    (incrementaQuantidade)="incrementaItensCarrinhoCompras($event)"
+                    (decrementaQuantidade)="decrementaItensCarrinhoCompras($event)"
+                    (removeItem)="removeItemCarrinhoCompras($event)"
+                  ></mt-itens-compra> <!-- Aula 65 -->
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                  <!-- accepted payments column -->
+                  <div class="col-sm-6 col-xs-12">
+                    <p class="lead">Formas de Pagamento:</p>
+
+                      <div class="form-group">
+                        <mt-radio [opcoes]="opcoesPagamento" formControlName="opcaoPagamento"></mt-radio> <!-- Aula 63 -->
+                      </div>
+
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6 col-xs-12">
+                    <p class="lead">Frete e Total:</p>
+                    <mt-custo-entrega
+                      [entrega]="entrega"
+                      [valorItens]=valorTotalCompra()
+                    >
+                    </mt-custo-entrega>
+                  </div>
+                  <!-- /.col -->
+                </div>
+
+              </form>
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <button href="order-summary.html" 
+                    class="btn btn-success pull-right" 
+                    [disabled]="compraForm.invalid || itensCarrinhoCompras().length === 0 "
+                    (click)="finalizaCompra(compraForm.value)"
+                  >
+                    <i class="fa fa-credit-card"></i> Concluir Pedido
+                  </button>
+                </div>
+              </div>
+
+          </section>
+      </section>
+      <!-- FIM DO CONTEUDO-->

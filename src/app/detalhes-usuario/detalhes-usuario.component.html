@@ -1,0 +1,14 @@
+<div class="navbar-custom-menu">
+  <ul class="nav navbar-nav">
+    <li class="user user-menu">
+
+      <span *ngIf="estaLogado(); else naoLogado">  <!-- Aula 122 5:50 (If / Else)-->
+        Olá {{recuperaUsuario().nome}} | <a (click)="realizarLogout()">Sair</a>
+      </span>
+      <ng-template #naoLogado>
+          <a (click)="realizarLogin()">Entrar</a>
+      </ng-template>
+
+    </li>
+  </ul>
+</div>
