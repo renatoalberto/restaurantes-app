@@ -1,6 +1,8 @@
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
+// Aula 132 - refatorando rxjs para angula 6
+// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { CompraComponent } from './compra.component';
 

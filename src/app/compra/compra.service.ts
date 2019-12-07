@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 // import { Http, Headers, RequestOptions } from '@angular/http'; //Aula 108 - refactory para Angula 4.3
 import {HttpClient, HttpHeaders } from '@angular/common/http'
 
-import { Observable } from 'rxjs/Observable';
+// Aula 132 - refatorando rxjs para angula 6
+// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 import { MEAT_API } from './../app.api';
 import { CarrinhoComprasService } from 'app/restaurantes/restaurante-detalhe/carrinho-compras/carrinho-compras.service';
@@ -62,9 +65,16 @@ export class CompraService {
       .map( order => order.id )  // aula 69 2:10
     */
 
+    /* Aula 132 - refatorando rxjs para angula 6
     // Aula 125 10:30 - Tratando header com Interceptor
     return this.http.post<Compra>(`${MEAT_API}/orders`, compra)
       .map( order => order.id )  // aula 69 2:10
+    */
+
+    // Aula 132 - refatorando rxjs para angula 6
+    // Aula 125 10:30 - Tratando header com Interceptor
+    return this.http.post<Compra>(`${MEAT_API}/orders`, compra)
+      .pipe(map( order => order.id ))  // aula 69 2:10
   }
 
   limparCompra(): void {

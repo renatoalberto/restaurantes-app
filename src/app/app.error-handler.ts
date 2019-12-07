@@ -1,9 +1,12 @@
 // import { Response } from '@angular/http' //Aula 108 - refactory para Angula 4.3
 import { HttpErrorResponse } from '@angular/common/http' // Aula 108 11:25 - refactory para Angula 4.3
-import { Observable } from 'rxjs/Observable'
 import { ErrorHandler, Injectable, Injector, NgZone } from '@angular/core'
 import { MensagemService } from './shared/mensagens/mensagens.service'
 import { LoginService } from './seguranca/login/login.service'
+
+// import { Observable } from 'rxjs/Observable' // Aula 132 - mudou para rxjs no angula 6
+// import 'rxjs/add/operator/throw'             // Aula 132 - mudou para rxjs no angula 6
+// import { throwError } from 'rxjs/operators'  // Aula 132 - mudou para rxjs no angula 6 * Exemplo Angular 6
 
 /* Aula 126 - Classe comentantada para criação do Error Hendler Global
 export class ErrorHandler { // aula 44

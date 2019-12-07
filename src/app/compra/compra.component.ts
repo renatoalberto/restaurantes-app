@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 
 import { CompraService } from './compra.service';
 
+import { tap } from 'rxjs/operators'
+
 import { RadioOption } from 'app/shared/radio/radio-option.model';
 import { CarrinhoCompras } from 'app/restaurantes/restaurante-detalhe/carrinho-compras/carrinho-compras.model';
 import { Compra, ItemCompra } from './compra.model'
@@ -44,12 +46,16 @@ export class CompraComponent implements OnInit {
         validators: [Validators.required, Validators.minLength(3)],
         updateOn: 'blur' // Aula 129 - FormControl + UpdateOn - Controla individual de evento de validação "Blur", "Change" ou "Submit"
       }),
+      // opcaoPagamento:    new FormControl('', {
+      //   validators: [Validators.required],
+      //   updateOn: 'change'                  // Importante para impactar o input no radio.component.ts
+      // }),
       email:             this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       emailConfirmacao:  this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       endereco:          this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
       numero:            this.formBuilder.control('', [Validators.required, Validators.pattern(this.numeroPattern)]),
       complemento:       this.formBuilder.control(''),
-      opcaoPagamento:    this.formBuilder.control('', [Validators.required])
+      opcaoPagamento:    this.formBuilder.control('', [Validators.required                                        ])
     },
     {validators: [CompraComponent.equalsTo], updateOn: 'blur'}) // Validadores Personalizados 74 - validando email = emailConfirmacao
   }
@@ -99,9 +105,9 @@ export class CompraComponent implements OnInit {
       .map( (item: CarrinhoCompras) => new ItemCompra( item.quantidade, item.itemMenu.id ) )
 
     this.compraService.finalizaCompra(compra)
-      .do((orderId: string) => {
+      .pipe(tap((orderId: string) => {
         this.orderId = orderId
-      })
+      }))
       .subscribe((orderId: string) => {
         this.compraService.limparCompra()
         this.router.navigate(['/compra-concluida']) // aula 69 5:20

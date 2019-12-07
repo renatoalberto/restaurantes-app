@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, animate, state, style } from '@angular/animations';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer'
-import 'rxjs/add/operator/do'
-import 'rxjs/add/operator/switchMap'
+// import { Observable } from 'rxjs/Observable';   // Aula 132 - mudou para rxjs no angula 6
+// import 'rxjs/add/observable/timer'
+// import 'rxjs/add/operator/do'
+// import 'rxjs/add/operator/switchMap'
+import { timer } from 'rxjs';          // Aula 132 - mudou para rxjs no angula 6
+import { tap, switchMap }    from 'rxjs/operators' // Aula 132 - mudou para rxjs no angula 6 (do virou tap)
 
 import { MensagemService } from '../mensagens.service';
 
@@ -47,6 +49,7 @@ export class SnackbarComponent implements OnInit {
     */
 
     // versão 2 - Notificação do Snackbar - Aula 87
+    /* atualização para angular 6 - Aula 132
     this.mensagemService.notificar
       .do( mensagem => {
         this.mensagem   = mensagem
@@ -54,7 +57,18 @@ export class SnackbarComponent implements OnInit {
       })
       .switchMap(menssagem => Observable.timer(3000))
       .subscribe(timer => this.estadoSnack = 'invisivel')
+    */
 
+    // versão 3 - atualização para angular 6 - Aula 132
+    this.mensagemService.notificar
+      .pipe(
+        tap( mensagem => {
+          this.mensagem   = mensagem
+          this.estadoSnack = 'visivel'
+        }),
+        switchMap(menssagem => timer(3000))
+      )
+      .subscribe( () => this.estadoSnack = 'invisivel')
   }
 
 }

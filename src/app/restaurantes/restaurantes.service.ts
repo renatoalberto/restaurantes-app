@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 // import { Http } from '@angular/http'; //Aula 108 - refactory para Angula 4.3
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'   // aula 43
-import 'rxjs/add/operator/catch' // aula 44
+// Aula 132 - refatorando rxjs para angula 6
+// import { Observable } from 'rxjs/Observable';
+// import 'rxjs/add/operator/map'   // aula 43
+// import 'rxjs/add/operator/catch' // aula 44
+import { Observable }       from 'rxjs';
 
 import { MEAT_API } from './../app.api';
 

@@ -1,7 +1,10 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import { Injectable, Injector } from '@angular/core';
 import { LoginService } from './login/login.service';
+
+// Aula 132 - refatorando rxjs para angula 6
+// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 // Aula 125 - Utilizando Http Interceptors
 @Injectable()

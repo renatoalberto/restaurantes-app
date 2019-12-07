@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+
+// Aula 132 - refatorando rxjs para angula 6
+// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { RestaurantesService } from 'app/restaurantes/restaurantes.service';
 import { ItemMenu } from '../item-menu/item-menu.model';

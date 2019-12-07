@@ -1,5 +1,8 @@
-import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
+
+// Aula 132 - refatorando rxjs para angula 6
+// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { RestaurantesService } from 'app/restaurantes/restaurantes.service';
 import { ActivatedRoute } from '@angular/router';

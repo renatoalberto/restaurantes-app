@@ -14,6 +14,7 @@ export class RadioComponent implements OnInit, ControlValueAccessor {
 
   valor: any
   onChange: any
+  onTouched: any
 
   constructor() { }
 
@@ -23,6 +24,7 @@ export class RadioComponent implements OnInit, ControlValueAccessor {
   opcaoSelecionada(valor: any): void {
     this.valor = valor
     this.onChange(valor)
+    this.onTouched(valor)
   }
 
   // Implementando a interface ControlValorAccessor - Aula 64
@@ -36,14 +38,16 @@ export class RadioComponent implements OnInit, ControlValueAccessor {
    * Set the function to be called when the control receives a change event.
    * Passa uma função para ser executada sempre que o valor interno do componente mudar
    */
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: any): void {            // Aula 129 - dica encontrada nas perguntas - {updateOn: 'change'} no compra.component.ts
     this.onChange = fn
   }
   /**
    * Set the function to be called when the control receives a touch event.
    * Útil para registrar que o usuário entrou no componente
    */
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {           // Aula 129 - dica encontrada nas perguntas - {updateOn: 'blur'  } no compra.component.ts
+    this.onTouched = fn
+  }
   /**
    * This function is called when the control status changes to or from "DISABLED".
    * Depending on the value, it will enable or disable the appropriate DOM element.
